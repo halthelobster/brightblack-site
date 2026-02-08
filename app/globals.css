@@ -1,6 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-bright-black: #0a0a0a;
+  --color-off-white: #f8f8f8;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite alternate;
+  --shadow-glow: 0 0 20px rgba(255,255,255,0.3);
+  --shadow-glow-lg: 0 0 40px rgba(255,255,255,0.4);
+}
+
+@keyframes glow-pulse {
+  0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+}
 
 :root {
   --background: #0a0a0a;
@@ -19,7 +31,6 @@ body {
   overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -28,78 +39,87 @@ a {
   text-decoration: none;
 }
 
-/* Custom glow effects */
-@layer components {
-  .glow-line {
-    position: relative;
-  }
-  
-  .glow-line::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.8), transparent);
-    transform: translate(-50%, -50%) rotate(45deg);
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-  }
-  
-  .glow-hover {
-    transition: all 0.3s ease;
-  }
-  
-  .glow-hover:hover {
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
-  
-  .glow-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .glow-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse 800px 600px at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  
-  .diagonal-glow {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .diagonal-glow::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.2) 52%, transparent 60%);
-    pointer-events: none;
-  }
+/* Glow effects */
+.glow-hover {
+  transition: all 0.3s ease;
+}
 
-  .hero-glow {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hero-glow::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 60%, transparent 80%);
-    pointer-events: none;
-  }
+.glow-hover:hover {
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+.glow-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse 800px 600px at 0% 0%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.diagonal-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.diagonal-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.08) 52%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.06) 60%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Stat card glow on hover */
+.stat-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-card:hover {
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 0 30px rgba(255,255,255,0.08);
+}
+
+/* Testimonial card */
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 80px;
+  line-height: 1;
+  color: rgba(255,255,255,0.08);
+  font-family: Georgia, serif;
 }
