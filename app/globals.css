@@ -1,26 +1,107 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
+  max-width: 100vw;
+  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom glow effects */
+@layer components {
+  .glow-line {
+    position: relative;
+  }
+  
+  .glow-line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.8), transparent);
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+  }
+  
+  .glow-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+  
+  .glow-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glow-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse 800px 600px at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .diagonal-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .diagonal-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.2) 52%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 60%, transparent 80%);
+    pointer-events: none;
+  }
 }
