@@ -14,9 +14,9 @@ const clients = [
 ];
 
 const stats = [
-  { value: "$2B+", label: "Partner Revenue Generated" },
-  { value: "24+", label: "Years of Industry Experience" },
-  { value: "3000+", label: "Professionals Trained" },
+  { category: "Cumulative Success", value: "$2B+", label: "Partner revenue generated through our design frameworks" },
+  { category: "Deep Expertise", value: "24+", label: "Years of experience at the intersection of psychology and tech" },
+  { category: "Industry Impact", value: "3000+", label: "Professionals trained in revenue design methodologies" },
 ];
 
 const bulletPoints = [
@@ -51,7 +51,7 @@ export default function Home() {
           {/* CTA */}
           <Link
             href="#contact"
-            className="bg-white text-[#0a0a0a] rounded-full px-5 py-2 text-[11px] font-semibold tracking-[0.08em] uppercase hover:bg-white/90 transition-colors"
+            className="bg-white text-[#0a0a0a] rounded px-5 py-2 text-[11px] font-semibold tracking-[0.08em] uppercase hover:bg-white/90 transition-colors"
           >
             Book a Call
           </Link>
@@ -76,9 +76,9 @@ export default function Home() {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <Link href="#contact" className="btn-primary">
-                Start a Project
+                Start a Project <span aria-hidden="true">→</span>
               </Link>
               <Link href="#work" className="btn-secondary">
                 View Work
@@ -112,8 +112,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {stats.map((s, i) => (
               <div key={i} className="stat-card">
+                <div className="label-text mb-6">{s.category}</div>
                 <div className="stat-number">{s.value}</div>
-                <div className="text-[13px] text-white/40 tracking-wide">
+                <div className="text-[12px] text-white/35 leading-[1.5] max-w-[200px] mx-auto">
                   {s.label}
                 </div>
               </div>
