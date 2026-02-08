@@ -28,7 +28,7 @@ const bulletPoints = [
 /* ── Page ── */
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#08090a] text-[#f7f8f8] font-sans antialiased">
+    <div className="min-h-screen bg-[#08090a] text-[#f7f8f8] font-sans antialiased grain">
       {/* ━━━ Navigation ━━━ */}
       <nav className="nav-container">
         <div className="max-w-[1100px] mx-auto px-6 h-[65px] flex items-center justify-between">
@@ -56,7 +56,7 @@ export default function Home() {
       </nav>
 
       {/* ━━━ Hero ━━━ */}
-      <section className="min-h-screen flex items-center justify-center pt-[65px]">
+      <section className="min-h-screen flex items-center justify-center pt-[65px] hero-gradient">
         <div className="max-w-[900px] mx-auto px-6 py-32 md:py-40 text-center">
           {/* Headline */}
           <h1 className="heading-display mb-6">

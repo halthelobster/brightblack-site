@@ -105,62 +105,113 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  font-size: 15px;
+  height: 42px;
+  padding: 0 20px;
+  font-size: 14px;
   font-weight: 500;
   color: #08090a;
   background: #e6e6e6;
   border: 1px solid #e6e6e6;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
+  letter-spacing: 0.02em;
 }
 
 .btn-primary:hover {
   background: #ffffff;
   border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  font-size: 15px;
+  gap: 8px;
+  height: 42px;
+  padding: 0 20px;
+  font-size: 14px;
   font-weight: 500;
   color: #f7f8f8;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  border-radius: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
+  letter-spacing: 0.02em;
 }
 
 .btn-outline:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  font-size: 15px;
+  height: 42px;
+  padding: 0 20px;
+  font-size: 14px;
   font-weight: 500;
   color: #8a8f98;
   background: transparent;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
+  letter-spacing: 0.02em;
 }
 
 .btn-ghost:hover {
   color: #f7f8f8;
+}
+
+/* ─── Subtle Ambient Effects ─── */
+.hero-gradient {
+  position: relative;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Fade-in animation for sections */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+/* Subtle grain texture overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
 }
 
 /* ─── Logo Bar (Linear.app style) ─── */
