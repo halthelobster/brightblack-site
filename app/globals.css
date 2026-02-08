@@ -1,23 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bright-black: #0a0a0a;
-  --color-off-white: #f5f5f5;
+  --color-bg: #0a0a0a;
+  --color-card: #111111;
+  --color-card-hover: #141414;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* ─── Base ─── */
-:root {
-  --bg: #0a0a0a;
-  --fg: #ffffff;
-}
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+
 body {
-  background: var(--bg);
-  color: var(--fg);
+  background: #0a0a0a;
+  color: #ffffff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,225 +23,182 @@ body {
 a { color: inherit; text-decoration: none; }
 
 ::selection {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
   color: #fff;
 }
 
 /* ─── Typography ─── */
 .display-heading {
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
 }
 
 .label-text {
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.4);
 }
 
-/* ─── The Diagonal Light ─── 
-   Core visual motif: light breaking through darkness
-   Always angled upward-right (represents growth)
-*/
-.diagonal-light {
-  position: relative;
-  overflow: hidden;
-}
-
-.diagonal-light::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    transparent 42%,
-    rgba(255,255,255,0.03) 45%,
-    rgba(255,255,255,0.06) 50%,
-    rgba(255,255,255,0.03) 55%,
-    transparent 58%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
-
-/* Hero ambient glow - top right */
-.hero-ambient {
-  position: relative;
-}
-
-.hero-ambient::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 60%;
-  height: 80%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,0.04) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-/* Section glow - subtle radial from left */
-.section-glow {
-  position: relative;
-}
-
-.section-glow::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -20%;
-  width: 50%;
-  height: 120%;
-  transform: translateY(-50%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,0.025) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-/* ─── Glow Effects ─── */
-.glow-border {
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glow-border:hover {
-  border-color: rgba(255,255,255,0.15);
-  box-shadow:
-    0 0 30px rgba(255,255,255,0.04),
-    inset 0 0 30px rgba(255,255,255,0.02);
-}
-
-/* CTA button glow */
+/* ─── Buttons ─── */
 .btn-primary {
-  position: relative;
   background: white;
   color: #0a0a0a;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 20px rgba(255,255,255,0.15);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.btn-primary:hover::after {
-  opacity: 1;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.12);
 }
 
 .btn-secondary {
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 9999px;
+  padding: 14px 28px;
+  transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.5);
   background: rgba(255,255,255,0.05);
 }
 
-/* ─── Photo treatment ─── */
-.photo-glow {
-  position: relative;
+/* ─── Stat Cards ─── */
+.stat-card {
+  background: #111111;
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+  transition: background 0.3s ease;
 }
 
-.photo-glow::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    transparent 30%,
-    rgba(255,255,255,0.1) 50%,
-    transparent 70%
-  );
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-  padding: 1px;
-  pointer-events: none;
+.stat-card:hover {
+  background: #141414;
 }
 
-/* ─── Stat number animation feel ─── */
 .stat-number {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.04em;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
 }
 
-/* ─── Testimonial quote mark ─── */
+/* ─── Quote Mark ─── */
 .quote-mark {
-  position: absolute;
-  top: -8px;
-  left: 16px;
-  font-size: 72px;
+  font-size: 180px;
   line-height: 1;
-  color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.05);
   font-family: Georgia, 'Times New Roman', serif;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
   pointer-events: none;
   user-select: none;
 }
 
-/* ─── Divider line with glow ─── */
-.glow-divider {
-  height: 1px;
+/* ─── Chart Card ─── */
+.chart-card {
+  background: #111111;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.chart-line {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(255,255,255,0.15) 20%,
-    rgba(255,255,255,0.15) 80%,
-    transparent
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.4) 100%
   );
+  transform: rotate(-12deg);
+  transform-origin: left center;
 }
 
-/* ─── Nav blur ─── */
-.nav-glass {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+.chart-line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
 }
 
-/* ─── Scroll indicator ─── */
-@keyframes float {
-  0%, 100% { transform: translateY(0); opacity: 0.4; }
-  50% { transform: translateY(8px); opacity: 0.8; }
+/* ─── Ambient Glow ─── */
+.hero-glow {
+  position: relative;
 }
 
-.scroll-indicator {
-  animation: float 2.5s ease-in-out infinite;
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at 80% 30%,
+    rgba(255,255,255,0.03) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
-/* ─── Responsive image container ─── */
-.headshot-container {
-  aspect-ratio: 3/4;
-  max-width: 360px;
-  width: 100%;
+/* ─── Nav ─── */
+.nav-link {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-@media (min-width: 768px) {
-  .headshot-container {
-    max-width: 420px;
-  }
+.nav-link:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ─── Bullet Point ─── */
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* ─── Divider ─── */
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
 }
