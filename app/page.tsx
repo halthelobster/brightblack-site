@@ -85,7 +85,7 @@ export default function Home() {
       {/* ━━━ Hero ━━━ */}
       <section className="hero-ambient min-h-screen flex items-end md:items-center pb-24 md:pb-0 pt-[72px]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
-          <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Copy */}
             <div className="space-y-8 md:space-y-10 order-2 md:order-1">
               <div className="space-y-4">
@@ -120,7 +120,7 @@ export default function Home() {
 
             {/* Headshot */}
             <div className="order-1 md:order-2 flex justify-center md:justify-end">
-              <div className="headshot-container relative rounded-2xl overflow-hidden photo-glow">
+              <div className="relative w-full max-w-[320px] md:max-w-[420px] aspect-[3/4] rounded-2xl overflow-hidden photo-glow">
                 <Image
                   src="/speaker-final-1024.jpg"
                   alt="Jordan Blackman"
