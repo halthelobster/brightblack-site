@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0a0a;
-  --color-card: #111111;
-  --color-card-hover: #141414;
+  --color-bg: #08090a;
+  --color-bg-nav: rgba(11, 11, 11, 0.8);
+  --color-text-primary: #f7f8f8;
+  --color-text-muted: #8a8f98;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-card: #101012;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -13,195 +16,263 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: #08090a;
+  color: #f7f8f8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 a { color: inherit; text-decoration: none; }
 
 ::selection {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
 
-/* ─── Typography ─── */
-.display-heading {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-}
-
-.label-text {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
-/* ─── Buttons ─── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: white;
+/* ─── Typography (Linear.app style) ─── */
+.heading-display {
+  font-size: 64px;
   font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 4px;
-  padding: 14px 24px;
-  transition: all 0.25s ease;
+  letter-spacing: -1.4px;
+  line-height: 1.06;
+  color: #f7f8f8;
 }
 
-.btn-primary:hover {
-  border-color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.05);
+@media (max-width: 768px) {
+  .heading-display {
+    font-size: 40px;
+    letter-spacing: -0.8px;
+  }
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  color: white;
+.heading-section {
+  font-size: 40px;
   font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 14px 24px;
-  transition: all 0.25s ease;
-  opacity: 0.7;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  color: #f7f8f8;
 }
 
-.btn-secondary:hover {
-  opacity: 1;
+@media (max-width: 768px) {
+  .heading-section {
+    font-size: 32px;
+  }
 }
 
-/* ─── Stat Cards ─── */
-.stat-card {
-  background: #111111;
-  border-radius: 12px;
-  padding: 48px 32px;
-  text-align: center;
-  transition: background 0.3s ease;
+.text-body {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #8a8f98;
 }
 
-.stat-card:hover {
-  background: #141414;
+.text-small {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #8a8f98;
 }
 
-.stat-number {
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-
-/* ─── Quote Mark ─── */
-.quote-mark {
-  font-size: 180px;
-  line-height: 1;
-  color: rgba(255,255,255,0.05);
-  font-family: Georgia, 'Times New Roman', serif;
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  user-select: none;
-}
-
-/* ─── Chart Card ─── */
-.chart-card {
-  background: #111111;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  min-height: 320px;
-}
-
-.chart-line {
-  position: absolute;
-  bottom: 60px;
-  left: 40px;
-  right: 40px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.1) 0%,
-    rgba(255,255,255,0.4) 100%
-  );
-  transform: rotate(-12deg);
-  transform-origin: left center;
-}
-
-.chart-line::after {
-  content: '';
-  position: absolute;
+/* ─── Navigation (Linear.app style) ─── */
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   right: 0;
-  top: -4px;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
+  z-index: 100;
+  background: rgba(11, 11, 11, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  height: 65px;
 }
 
-/* ─── Ambient Glow ─── */
-.hero-glow {
-  position: relative;
-}
-
-.hero-glow::before {
-  content: '';
-  position: absolute;
-  top: 10%;
-  right: 0;
-  width: 50%;
-  height: 60%;
-  background: radial-gradient(
-    ellipse at 80% 30%,
-    rgba(255,255,255,0.03) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-/* ─── Nav ─── */
 .nav-link {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  font-size: 13px;
   font-weight: 500;
+  color: #8a8f98;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: rgba(255,255,255,0.9);
+  color: #f7f8f8;
 }
 
-/* ─── Bullet Point ─── */
+/* ─── Buttons (Linear.app style) ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #08090a;
+  background: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f7f8f8;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8a8f98;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  color: #f7f8f8;
+}
+
+/* ─── Logo Bar (Linear.app style) ─── */
+.logo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo-item {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8a8f98;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+/* ─── Stats (Linear.app style) ─── */
+.stat-card {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.stat-value {
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: #f7f8f8;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .stat-value {
+    font-size: 44px;
+  }
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8a8f98;
+  line-height: 1.5;
+}
+
+/* ─── Content Card (Linear.app style) ─── */
+.content-card {
+  background: #101012;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* ─── Bullet Points ─── */
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .bullet-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 14px;
 }
 
 .bullet-dot {
   width: 6px;
   height: 6px;
-  background: rgba(255,255,255,0.3);
+  background: #8a8f98;
   border-radius: 50%;
   margin-top: 8px;
   flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* ─── Quote ─── */
+.quote-text {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #f7f8f8;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .quote-text {
+    font-size: 20px;
+  }
 }
 
 /* ─── Divider ─── */
 .divider {
   height: 1px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Section Spacing ─── */
+.section-padding {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }
